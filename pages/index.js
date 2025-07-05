@@ -35,6 +35,6 @@ export async function getStaticProps() {
         id: meetup._id.toString(),
       })),
     },
-    revalidate: 1, // sau 1s thì chạy lại hàm này -> re-render page này
+    revalidate: 5, // sau 10s thì chạy lại hàm này -> re-render page này
   };
 }

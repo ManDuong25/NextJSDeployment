@@ -30,7 +30,7 @@ export async function getStaticPaths() {
 
   client.close();
   return {
-    fallback: false, // false => paths chứa hết id (gõ m3 => ra lỗi), true -> paths chưa chứa hết ()
+    fallback: 'blocking', // cho phép tạo trang mới khi có meetup mới
     paths: meetups.map((meetup) => ({
       params: {
         meetupId: meetup._id.toString(),
@@ -62,5 +62,6 @@ export async function getStaticProps(context) {
         image: selectedMeetup.image,
       },
     },
+    revalidate: 10,
   };
 }
